@@ -10,15 +10,22 @@
  */
 class Solution {
     public ListNode deleteDuplicates(ListNode head) {
+        Set<Integer> result= new HashSet<>();
         ListNode curr=head;
-        while(curr!=null && curr.next!=null){
-            if(curr.val==curr.next.val){
-                curr.next=curr.next.next;
+        ListNode prev=null;
+        while(curr!=null){
+            if(result.contains(curr.val)){
+                prev.next=curr.next;
             }
             else{
-                curr=curr.next;
+                result.add(curr.val);
+                prev=curr;
+
             }
+            curr=curr.next;
+            
         }
         return head;
+
     }
 }
