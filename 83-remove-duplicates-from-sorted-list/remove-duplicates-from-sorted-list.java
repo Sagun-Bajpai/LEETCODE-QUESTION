@@ -15,10 +15,10 @@ class Solution {
         ListNode prev=null;
         while(curr!=null){
             if(result.contains(curr.val)){
-                prev.next=curr.next;
+                prev.next=curr.next;//we check duplicate then skip
             }
             else{
-                result.add(curr.val);
+                result.add(curr.val);//if value not duplicate then add in set
                 prev=curr;
 
             }
