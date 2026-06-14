@@ -10,6 +10,7 @@
  */
 class Solution {
     public ListNode mergeTwoLists(ListNode list1, ListNode list2) {
+        //using extra space becoz we are creating new dode for each and eavry node. 
         ListNode temp1=list1;
         ListNode temp2=list2;
         ListNode list= new ListNode(100);
