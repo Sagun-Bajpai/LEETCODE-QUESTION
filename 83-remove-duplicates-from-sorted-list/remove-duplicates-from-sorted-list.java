@@ -10,19 +10,16 @@
  */
 class Solution {
     public ListNode deleteDuplicates(ListNode head) {
-        Set<Integer> result= new HashSet<>();
-        ListNode curr=head;
-        ListNode prev=null;
-        while(curr!=null){
-            if(result.contains(curr.val)){
-                prev.next=curr.next;//we check duplicate then skip
+        ListNode temp=head;
+        while(temp!=null && temp.next!=null){
+            if(temp.val==temp.next.val){
+                temp.next=temp.next.next;
+               
             }
             else{
-                result.add(curr.val);//if value not duplicate then add in set
-                prev=curr;
-
+                 temp=temp.next;
             }
-            curr=curr.next;
+            
             
         }
         return head;
