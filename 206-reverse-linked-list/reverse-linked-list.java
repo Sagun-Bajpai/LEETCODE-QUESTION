@@ -1,17 +1,17 @@
 
 class Solution {
     public ListNode reverseList(ListNode head) {
-        ListNode prev=null;
-        ListNode curr=head;
-        ListNode next=null;
-        while(curr!=null){
-            next=curr.next;
-            curr.next=prev;
-            prev=curr;
-            curr=next;
-
-        }
-        return prev;
-        
+       //we take a 3 list node prev,curr,after
+       ListNode prev=null;
+       ListNode after=null;
+       ListNode curr=head;
+       while(curr!=null){
+        after=curr.next;// curr.next->after
+        curr.next=prev;// null<-curr.next
+        prev=curr;
+        curr=after;
+       
+       }// previous is made hai fully list
+       return prev;
     }
 }
