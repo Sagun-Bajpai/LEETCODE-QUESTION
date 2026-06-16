@@ -24,15 +24,14 @@ public class Solution {
                 break;
             }
         }
+         ListNode temp=head;
 
-        ListNode temp=head;
-        if(fast==null || fast.next==null) {
+        if(fast==null || fast.next==null){
             return null;
         }
         while(temp!=slow){
             temp=temp.next;
             slow=slow.next;
-
         }
 
         return slow;
