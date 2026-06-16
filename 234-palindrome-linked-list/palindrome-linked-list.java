@@ -9,31 +9,37 @@
  * }
  */
 class Solution {
-    public boolean isPalindrome(ListNode head) {
-        ListNode slow=head;
-        ListNode fast=head;
-        while(fast!=null && fast.next!=null){
-            slow=slow.next;
-            fast=fast.next.next;
-        }
+    //reverse method
+    public ListNode reverse(ListNode head){
         ListNode prev=null;
-        ListNode mid=slow;
-        while(mid!=null){//for second half reverse
-           ListNode next=mid.next;
-            mid.next=prev;
-            prev=mid;
-            mid=next;
+        ListNode after=null;
+        ListNode curr=head;
+        while(curr!=null){
+            after=curr.next;
+            curr.next=prev;
+            prev=curr;
+            curr=after;
+
         }
-        //step3  for compare first half and second half value
-        ListNode left=head;
-        ListNode right=prev;
-        while(right!=null){
-            if(left.val!=right.val){
-                return false;
-            }
-            left=left.next;
-            right=right.next;
-        }
-        return true;
+        return prev;
+    }
+    public boolean isPalindrome(ListNode head) {
+       ListNode slow=head;
+       ListNode fast=head;
+       while(fast.next!=null && fast.next.next!=null){
+        slow=slow.next;
+        fast=fast.next.next;
+       }
+       //slow is a left mid of linkedlist and we are reverse slow.next total remaining list
+       ListNode temp=reverse(slow.next);
+       slow.next=temp;
+       ListNode p1=head;
+       ListNode p2=slow.next;
+       while(p2!=null){
+        if(p1.val!=p2.val) return false;
+        p1=p1.next;
+        p2=p2.next;
+       }
+       return true;
     }
 }
