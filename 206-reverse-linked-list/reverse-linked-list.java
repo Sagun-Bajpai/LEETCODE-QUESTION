@@ -1,18 +1,20 @@
-
+import java.util.*;
 class Solution {
     public ListNode reverseList(ListNode head) {
        //we take a 3 list node prev,curr,after
-       ListNode prev=null;
-       ListNode after=null;
        ListNode curr=head;
+       Stack<Integer>st=new Stack<>();
        while(curr!=null){
-        after=curr.next;
-        curr.next=prev;
-        prev=curr;
-        curr=after;
-        
+        st.push(curr.val);
+        curr=curr.next;
        }
-       return prev;
-      
+       curr=head;
+       while(curr!=null){
+        curr.val=st.peek();
+        st.pop();
+        curr=curr.next;
+       }
+       return head;
+
     }
 }
