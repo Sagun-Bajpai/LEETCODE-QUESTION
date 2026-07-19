@@ -10,6 +10,7 @@
  */
 class Solution {
     public ListNode removeNthFromEnd(ListNode head, int n) {
+        //brute force approach
         int length=0;
         ListNode curr=head;
         while(curr!=null){
