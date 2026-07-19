@@ -6,12 +6,13 @@ class Solution {
        ListNode after=null;
        ListNode curr=head;
        while(curr!=null){
-        after=curr.next;// curr.next->after
-        curr.next=prev;// null<-curr.next
+        after=curr.next;
+        curr.next=prev;
         prev=curr;
         curr=after;
-       
-       }// previous is made hai fully list
+        
+       }
        return prev;
+      
     }
 }
