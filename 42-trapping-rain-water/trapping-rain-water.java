@@ -24,6 +24,9 @@ class Solution {
             trappedwater += waterlevel - height[i];
         }
         return trappedwater;
+
+        //TC=0(n)
+        //SC=0(n)
         
     }
 }
