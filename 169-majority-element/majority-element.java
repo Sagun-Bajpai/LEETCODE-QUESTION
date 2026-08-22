@@ -2,10 +2,10 @@ class Solution {
     public int majorityElement(int[] arr) {
         int n = arr.length;
         int max = 0;
+        int ans = arr[0];
         if (n == 1) {
             return arr[0];
         }
-        int ans = arr[0];
 
         for (int i = 0; i < n - 1; i++) {
             int count = 1;
