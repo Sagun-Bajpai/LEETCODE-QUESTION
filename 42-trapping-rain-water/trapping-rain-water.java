@@ -1,29 +1,29 @@
 class Solution {
     public int trap(int[] height) {
-        //prifix method for resolve the problem
-        int n = height.length;
-        if (n == 0)
-            return 0;
-        int max = Integer.MIN_VALUE;
-        int min = Integer.MAX_VALUE;
-        int leftMax[] = new int[n];
-         int rightMax[] = new int[n];
-
-        leftMax[0] = height[0];
-        for (int i = 1; i < n; i++) {
-            leftMax[i] = Math.max(leftMax[i - 1], height[i]);
+        int n=height.length;
+        //calculate lestmax boundary
+        int leftmax[]=new int[n];
+        leftmax[0]=height[0];
+        for(int i=1;i<n;i++){
+            leftmax[i]=Math.max(height[i],leftmax[i-1]);
         }
+
+        //calculate rightmax bondary
+        int rightmax[]=new int[n];
+        rightmax[n-1]=height[n-1];
+        for(int i=n-2;i>=0;i--){
+            rightmax[i]=Math.max(height[i],rightmax[i+1]);
+        }
+
+        int trappedwater=0;
+        //loop
+        for(int i=0;i<n;i++){
+            //waterlevel=min(leftmax,rightmax)
+            int waterlevel= Math.min(leftmax[i],rightmax[i]);
+            // trappedwater= waterlevel- height[i];
+            trappedwater += waterlevel - height[i];
+        }
+        return trappedwater;
         
-        rightMax[n - 1] = height[n - 1];
-        for (int i = n - 2; i >= 0; i--) {
-            rightMax[i] = Math.max(rightMax[i + 1], height[i]);
-        }
-
-        int ans = 0;
-        for (int i = 0; i < n; i++) {
-            ans += Math.min(leftMax[i], rightMax[i]) - height[i];
-        }
-        return ans;
-
     }
 }
