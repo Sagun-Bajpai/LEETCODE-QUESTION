@@ -1,32 +1,31 @@
 class Solution {
-    public void sortColors(int[] nums) {
-        int n= nums.length;
-        int count1=0;
-        int count2=0;
-        int count3=0;
-        for(int i=0;i<n;i++){
-            if(nums[i]==0){
-                count1++;
-            }
-            else if(nums[i]==1){
-                count2++;
-            }
-            else if(nums[i]==2){
-                count3++;
-            }
-            
+
+    // YE NAYA METHOD ADD KARO
+    private void swap(int[] arr, int i, int j) {
+        int temp = arr[i];
+        arr[i] = arr[j];
+        arr[j] = temp;
+    }
+    public void sortColors(int[] arr) { 
+        int n=arr.length;    
+        int slow=0;
+        int mid=0;
+        int high=n-1;
+       while(mid<=high){
+        if(arr[mid]==0){
+            swap(arr,mid,slow);
+            mid++;
+            slow++;
         }
-        for(int i=0;i<count1;i++){
-            nums[i]=0;
+        else if(arr[mid]==2){
+            swap(arr,mid,high);
+            high--;
+        }
+        else{
+            mid++;
         }
 
-        for(int i=count1;i<count1+count2;i++){
-            nums[i]=1;
-        }
-
-        for(int i=count1+count2;i<n;i++){
-            nums[i]=2;
-        }
+       }
         
     }
 }
