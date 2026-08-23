@@ -1,20 +1,18 @@
 class Solution {
+    public static void swap(int[]arr,int i,int j){
+        int temp=arr[i];
+        arr[i]=arr[j];
+        arr[j]=temp;
+    }
     public int removeDuplicates(int[] arr) {
-        int j=0;
         int n=arr.length;
-        int count=1;
-        while(j<n-1){
-            if(arr[j]==arr[j+1]){
-                j++;
-                continue;
-            }
-            else{
-               
-                arr[count]=arr[j+1];
-                 count++;
-                j++;
+        int i=0;
+        for(int j=1;j<n;j++){
+            if(arr[i]!=arr[j]){
+                i++;
+                swap(arr,i,j);
             }
         }
-        return count;
+        return i+1;
     }
 }
