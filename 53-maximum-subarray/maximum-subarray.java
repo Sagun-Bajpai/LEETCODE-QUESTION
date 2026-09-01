@@ -2,18 +2,21 @@
 
 //if / if → dono blocks check honge, independently (dono chal sakte hain, agar dono conditions true hain)
 class Solution {
-    public int maxSubArray(int[] nums) {
-        int sum=0;
-        int max_sum=nums[0];
-        for(int i=0;i<nums.length;i++){
-            sum=sum+nums[i];
-            if(sum>max_sum){
-                max_sum=sum;
-            }
-            if(sum<0){
-                sum=0;   
-            }
+    public int maxSubArray(int[] arr) {
+      int maxsum=Integer.MIN_VALUE;
+      int currsum=0;
+      int n=arr.length;
+      int i=0;
+      while(i<n){
+        currsum += arr[i];
+        maxsum=Math.max(currsum,maxsum);
+        if(currsum<0){
+            currsum=0;
         }
-        return max_sum;
+        i++;
+        
+        
+      }
+       return maxsum;
     }
 }
