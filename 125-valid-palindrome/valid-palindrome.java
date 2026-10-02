@@ -1,23 +1,25 @@
 class Solution {
     public boolean isPalindrome(String s) {
-        int st=0;
-        int end=s.length()-1;
-        while(st<end){
-            while(st<end && !Character.isLetterOrDigit(s.charAt(st))){
-                st++;
-            }
+        int left = 0;
+        int right = s.length() - 1;
+        while (left <= right) {
+            //check alphanumeric character
+            if (!Character.isLetterOrDigit(s.charAt(left))) {
+                left++;
+            } else if (!Character.isLetterOrDigit(s.charAt(right))) {
+                right--;
 
-            while(st<end && !Character.isLetterOrDigit(s.charAt(end))){
-                end--;
             }
-
-            if(Character.toLowerCase(s.charAt(st)) !=Character.toLowerCase(s.charAt(end))){
+            //check lower and uppercase letter
+            else if (Character.toLowerCase(s.charAt(left)) != Character.toLowerCase(s.charAt(right))) {
                 return false;
-                
+            } else {
+                left++;
+                right--;
             }
-            st++;
-            end--;
+
         }
         return true;
+
     }
 }
