@@ -28,9 +28,7 @@ class Solution {
 
             int j = 0;
 
-            while (j < prefix.length() &&
-                   j < s[i].length() &&
-                   prefix.charAt(j) == s[i].charAt(j)) {
+            while (j < prefix.length() &&j < s[i].length() && prefix.charAt(j) == s[i].charAt(j)) {
                 j++;
             }
 
