@@ -4,17 +4,11 @@ class Solution {
       for(int nums:arr){
         if(set.contains(nums)){
             set.remove(nums);
-        }else{
-             set.add(nums);
-            
-        } 
-      }
-      
-      int singleNo=0;
-      for(int x:set){
-        singleNo=x;
-        
-      }
-      return singleNo; 
+        }
+        else{
+            set.add(nums);
+        }
+        }
+        return set.iterator().next();
     }
 }
